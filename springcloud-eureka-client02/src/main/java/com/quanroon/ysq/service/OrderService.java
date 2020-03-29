@@ -18,6 +18,7 @@ import java.util.*;
 public class OrderService {
     private static final Map<String, Order> ORDER_DATA = new HashMap<String, Order>();
 
+    //模拟创建订单数据
     static {
         // 模拟数据库，构造测试数据
         Order order = new Order();
@@ -56,7 +57,7 @@ public class OrderService {
         }
         List<OrderDetail> orderDetails = order.getOrderDetails();
         for (OrderDetail orderDetail : orderDetails) {
-            // 通过商品微服务查询商品详细数据
+            // 通过商品订单微服务查询商品详细数据
             Item item = this.itemService.queryItemById(orderDetail.getItem()
                     .getId());
             if (null == item) {

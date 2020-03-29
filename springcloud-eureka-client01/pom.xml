@@ -21,6 +21,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--
+            spring-cloud-starter-netflix-eureka-client依赖包中已经包含了。无需再引入Ribbon
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            </dependency>
+        -->
     </dependencies>
 
     <build>
