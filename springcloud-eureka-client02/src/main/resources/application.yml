@@ -17,3 +17,12 @@ eureka:
     register-with-eureka: true
 ###是否需要从eureka上检索服务
     fetch-registry: true
+  instance:
+      prefer-ip-address: false #将自己的ip注册到Eureka服务中,并改变其在注册中的地址
+      ip-address: 127.0.0.1
+#      instance-id: ${spring.application.name}###${server.port} #指定实例id,改变其在注册中心的地址
+
+###设置客户端的负载均衡策略
+#app-item: #提供者的服务名称
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
@@ -17,9 +18,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication//申明这是一个Spring Boot项目
 @ComponentScan(basePackages = {"com.quanroon.ysq.web", "com.quanroon.ysq.service"})//手动指定bean扫描范围
 @EnableEurekaClient
-public class OrderApp {
+@EnableHystrix
+public class OrderApp8082 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderApp.class, args);
+        SpringApplication.run(OrderApp8082.class, args);
     }
 
     /**

@@ -11,6 +11,8 @@
         <module>springcloud-eureka-server</module>
         <module>springcloud-eureka-client01</module>
         <module>springcloud-eureka-client02</module>
+        <module>springcloud-eureka-server8200</module>
+        <module>springcloud-eureka-client01_1</module>
     </modules>
 
     <name>springcloud parent</name>

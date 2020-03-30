@@ -1,5 +1,6 @@
 package com.quanroon.ysq.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.quanroon.ysq.entity.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,33 @@ public class ItemService {
         Item result = restTemplate.getForObject(itemUrl, Item.class, id);
         System.out.println("订单系统调用商品服务,result:" + result);
         return result;
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * 进行容错处理
+     * fallbackMethod的方法参数个数类型要和原方法一致
+     * 如果http://app-item/item/{id}这个微服务不可用，则该方法就会回调容错处理，而不是直接报服务器500
+     * @param id
+     * @return
+     */
+    @HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod")
+    public Item queryItemById2(Long id) {
+        //String itemUrl = "http://app-item/item/{id}";//这个地址不可用,测试容错处理，是否回调
+        String itemUrl = "http://app-item/provideApi/item/{id}";
+        Item result = restTemplate.getForObject(itemUrl, Item.class, id);
+        System.out.println("===========HystrixCommand queryItemById-线程池名称：" + Thread.currentThread().getName() + "订单系统调用商品服务,result:" + result);
+        return result;
+    }
+
+    /**
+     * 请求失败执行的方法
+     * fallbackMethod的方法参数个数类型要和原方法一致
+     *
+     * @param id
+     * @return
+     */
+    public Item queryItemByIdFallbackMethod(Long id) {
+        return new Item(id, "查询商品信息出错!", null, null, null);
     }
 }
