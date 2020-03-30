@@ -1,10 +1,12 @@
 package com.quanroon.ysq;
 
+import com.quanroon.ysq.config.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan(basePackages = {"com.quanroon.ysq.web", "com.quanroon.ysq.service"})//手动指定bean扫描范围
 @EnableEurekaClient
 @EnableHystrix
+@RibbonClient(name = "app-item", configuration = MySelfRule.class)
 public class OrderApp8082 {
     public static void main(String[] args) {
         SpringApplication.run(OrderApp8082.class, args);
