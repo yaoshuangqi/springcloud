@@ -13,6 +13,7 @@
         <module>springcloud-eureka-client02</module>
         <module>springcloud-eureka-server8200</module>
         <module>springcloud-eureka-client01_1</module>
+        <module>springcloud-zuul-gateway9527</module>
     </modules>
 
     <name>springcloud parent</name>

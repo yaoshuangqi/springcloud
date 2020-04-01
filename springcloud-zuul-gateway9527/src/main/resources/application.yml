@@ -1,0 +1,46 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: springcloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ysq:123456@127.0.0.1:8100/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+#application.properties配置文件，会用${parameter}去读取pom文件的变量
+#application.yml，${parameter}则是读取文件内部的变量值
+#若想读取pom.xml文件的变量应该使用"@parameter@"    记得要加""
+info:
+  app.name: ysq-microcloud
+  company.name: www.quanroon.com
+  build.artifactId: "@project.artifactId@"
+  build.version: "@project.version@"
+
+# 路由映射规则参数
+## public static class ZuulRoute {
+  #private String id;
+  #private String path;
+  #private String serviceId;
+  #private String url;
+  #private boolean stripPrefix = true;
+  #private Boolean retryable;
+zuul:
+  prefix: /ysq #增加统一的访问前缀
+  #此处添加ignored-services的意义是忽略通过服务名可以访问微服务(添加完成之后不能通过服务名访问微服务)
+  ignored-services:
+    - app-item
+    - app-order
+  routes:
+#    item-service:     #item-service随意取名，最好与业务挂钩
+#      path: /quanroon-item/**    #需要访问app-item微服务时，配置路由规则后，就可以使用路由地址进行统一访问了：http://localhost:9527/ysq/quanroon/provideApi/item/1
+#      serviceId: app-item   #也可以使用url指定要路由的微服务地址（Zuul可以不用走注册中），使用微服务名称路由，需要走注册中心
+#    order-service:
+#      path: /quanroon-order/**
+#      serviceId: app-order
+    app-item: /quanroon-item/**   #可以代替上面这种设置。该设置就是一个键值对。
+    app-order: /quanroon-order/**   #这样设置，即app-order微服务就会被映射到/quanroon-order/**路径
