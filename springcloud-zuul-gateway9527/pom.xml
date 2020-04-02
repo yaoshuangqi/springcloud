@@ -20,7 +20,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- zuul路由网关 -->
+        <!-- zuul路由网关 zuul默认开启了ribbon，带有负载均衡，轮询策略-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>

@@ -42,5 +42,5 @@ zuul:
 #    order-service:
 #      path: /quanroon-order/**
 #      serviceId: app-order
-    app-item: /quanroon-item/**   #可以代替上面这种设置。该设置就是一个键值对。
-    app-order: /quanroon-order/**   #这样设置，即app-order微服务就会被映射到/quanroon-order/**路径
+    app-item: /quanroon-item/**    #可以代替上面这种设置。该设置就是一个键值对。
+    app-order: /quanroon-order/**  #这样设置，即app-order微服务就会被映射到/quanroon-order/**路径
