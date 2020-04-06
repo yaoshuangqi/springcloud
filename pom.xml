@@ -15,6 +15,8 @@
         <module>springcloud-eureka-client01_1</module>
         <module>springcloud-zuul-gateway9527</module>
         <module>springcloud-eureka-client02-feign8083</module>
+        <module>springcloud-nacos-provide8701</module>
+        <module>springcloud-nacos-consumer8801</module>
     </modules>
 
     <name>springcloud parent</name>
@@ -34,6 +36,15 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 此依赖应用于阿里的nacos服务，导入alibaba oud的依赖管理，2.0版本与Finchley对应-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.0.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
