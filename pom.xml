@@ -17,6 +17,8 @@
         <module>springcloud-eureka-client02-feign8083</module>
         <module>springcloud-nacos-provide8701</module>
         <module>springcloud-nacos-consumer8801</module>
+        <module>springcloud-gateway-service</module>
+        <module>springcloud-gateway-server</module>
     </modules>
 
     <name>springcloud parent</name>

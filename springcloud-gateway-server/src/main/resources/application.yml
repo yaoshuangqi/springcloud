@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - predicates:
+            - Path=/gateway/** #路径匹配
+          filters:
+            - StripPrefix=1 #跳过前缀
+          uri: http://localhost:8080 #如果基于注册中心，则可以使用lb://服务名称
+server:
+  port: 8888
